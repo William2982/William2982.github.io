@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGM | Memorias</title>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <!-- Firebase Storage -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-storage-compat.js"></script>
+    <!-- Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+
+    <link rel="shortcut icon" href="assets/logo_msgm.webp" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/firebase.js"></script>
+    <script src="js/index.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="assets/logo_msgm.webp" alt=" ">
+            </a>
+            <h1>Memorias De La Segunda Guerra Mundial</h1>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="#">Causas</a></li>
+                <li><a href="#">Consecuencias</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Personajes</a></li>
+                <li><a href="#">Batallas</a></li>
+                <li><a href="#">Arsenal</a></li>
+                <li>
+                    <svg id="btn-login" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1536">
+                        <path fill="currentColor"
+                            d="M1280 1271q0 109-62.5 187t-150.5 78H213q-88 0-150.5-78T0 1271q0-85 8.5-160.5t31.5-152t58.5-131t94-89T327 704q131 128 313 128t313-128q76 0 134.5 34.5t94 89t58.5 131t31.5 152t8.5 160.5m-256-887q0 159-112.5 271.5T640 768T368.5 655.5T256 384t112.5-271.5T640 0t271.5 112.5T1024 384" />
+                    </svg>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Un conflicto que cambió el mundo</h2>
+            <p>La <strong>Segunda Guerra Mundial</strong> fue el conflicto más grande y devastador en la historia de la
+                humanidad. Desde
+                1939 hasta 1945, el mundo estuvo sumido en una guerra que transformó la política, la economía y la
+                sociedad global. Las alianzas entre países, los avances tecnológicos y las atrocidades cometidas
+                marcaron profundamente el siglo XX, dejando cicatrices que aún perduran.</p>
+            <button class="btn">Saber más</button>
+        </section>
+
+        <div id="fotos-hero">
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- Script -->
+                </div>
+                <button class="carousel-button prev">&#10094;</button>
+                <button class="carousel-button next">&#10095;</button>
+            </div>
+        </div>
+
+        <div id="impactos" class="container">
+            <h2>Impactos Interesantes</h2>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- Script -->
+                </div>
+                <button class="carousel-button prev">&#10094;</button>
+                <button class="carousel-button next">&#10095;</button>
+            </div>
+        </div>
+
+        <div id="fotos-batallas" class="container">
+            <h2>Batallas Importantes</h2>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- Script -->
+                </div>
+                <button class="carousel-button prev" id="btn-prev">&#10094;</button>
+                <button class="carousel-button next" id="btn-next">&#10095;</button>
+            </div>
+        </div>
+
+        <div id="hechos" class="container">
+            <h2>Hechos Durante La Guerra</h2>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- Script -->
+                </div>
+                <button class="carousel-button prev">&#10094;</button>
+                <button class="carousel-button next">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="datos-container">
+            <h2>Impactos Interesantes</h2>
+            <div class="cards-container">
+
+                <div class="card">
+                    <h3>Impacto Global</h3>
+                    <p>La guerra involucró a más de 100 millones de personas en más de 30 países, con pérdidas humanas y
+                        materiales incalculables.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Consecuencias Políticas</h3>
+                    <p>El conflicto dio lugar a la creación de las Naciones Unidas, y marcó el inicio de la Guerra Fría
+                        entre Estados Unidos y la Unión Soviética.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Innovación Tecnológica</h3>
+                    <p>Durante la guerra, se desarrollaron avances como el radar, la energía nuclear y los primeros
+                        ordenadores, que revolucionaron la tecnología militar y civil.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Impacto Económico</h3>
+                    <p>La Segunda Guerra Mundial dejó a varias naciones devastadas económicamente, pero también impulsó
+                        el crecimiento industrial en otras.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Transformaciones Sociales</h3>
+                    <p>El conflicto aceleró cambios sociales, como el rol de la mujer en el trabajo, y planteó el
+                        principio del movimiento por los derechos civiles en varias partes del mundo.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Consecuencias Territoriales</h3>
+                    <p>Después de la guerra, las fronteras de varios países fueron redibujadas, especialmente en Europa
+                        y Asia, alterando el mapa geopolítico global.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Derechos Humanos</h3>
+                    <p>La atrocidades cometidas durante la guerra, como el Holocausto, llevaron a la creación de la
+                        Declaración Universal de los Derechos Humanos en 1948.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Impacto Cultural</h3>
+                    <p>La Segunda Guerra Mundial tuvo un impacto profundo en la cultura popular, influyendo en la
+                        literatura, el cine y el arte, con obras que reflejan el trauma y las lecciones aprendidas del
+                        conflicto.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Fin del Colonialismo</h3>
+                    <p>El debilitamiento de las potencias europeas tras la guerra dio impulso a los movimientos de
+                        independencia en África, Asia y el Caribe, iniciando el fin del colonialismo.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="datos-container">
+            <h2>Hechos Durante La Guerra</h2>
+            <div class="cards-container">
+
+                <div class="card">
+                    <h3>Bombardeos Masivos</h3>
+                    <p>Las tácticas de bombardeo aéreo masivo afectaron tanto a objetivos militares como a ciudades
+                        civiles, causando millones de muertes y destrucción.</p>
+                </div>
+
+                <div class="card">
+                    <h3>El Holocausto</h3>
+                    <p>Durante la guerra, el régimen nazi llevó a cabo el genocidio sistemático de seis millones de
+                        judíos, junto con otras minorías, en campos de concentración y exterminio.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Guerra en el Pacífico</h3>
+                    <p>El conflicto en el Pacífico fue una parte crucial de la Segunda Guerra Mundial, enfrentando a
+                        Japón contra Estados Unidos y sus aliados, culminando en la rendición japonesa tras el uso de
+                        armas nucleares.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Reconstrucción de Europa</h3>
+                    <p>Tras la guerra, Europa quedó en ruinas. El Plan Marshall, financiado por Estados Unidos, ayudó a
+                        la reconstrucción económica del continente occidental.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Nuevas Superpotencias</h3>
+                    <p>Al finalizar la guerra, Estados Unidos y la Unión Soviética emergieron como superpotencias
+                        globales, iniciando una era de bipolaridad que definiría la política mundial durante la Guerra
+                        Fría.</p>
+                </div>
+
+                <div class="card">
+                    <h3>El Eje vs Los Aliados</h3>
+                    <p>La guerra enfrentó a las potencias del Eje (Alemania, Italia y Japón) contra los Aliados (Reino
+                        Unido, Estados Unidos, la Unión Soviética, entre otros), en una lucha global por la supremacía.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Guerra Aérea</h3>
+                    <p>La guerra aérea alcanzó nuevas alturas durante el conflicto, con bombardeos masivos sobre
+                        ciudades como Londres, Berlín y Tokio, causando devastación generalizada.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Crímenes de Guerra</h3>
+                    <p>Los juicios de Núremberg después de la guerra marcaron un precedente histórico en la persecución
+                        de crímenes de guerra y crímenes contra la humanidad, juzgando a los líderes nazis responsables.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>El Frente Oriental</h3>
+                    <p>El Frente Oriental fue uno de los escenarios más brutales de la guerra, donde la Unión Soviética
+                        y Alemania lucharon en batallas épicas como Stalingrado y Kursk, marcando un punto de inflexión
+                        en el conflicto.</p>
+                </div>
+
+                <div class="card">
+                    <h3>La Guerra de Información</h3>
+                    <p>La propaganda fue una herramienta clave durante la guerra, utilizada para moldear la opinión
+                        pública, movilizar a la población y deslegitimar al enemigo a través de medios como el cine, la
+                        radio y los carteles.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>El Uso de la Tecnología en la Guerra</h3>
+                    <p>La guerra vio la introducción de nuevas tecnologías militares, como tanques, aviones de combate y
+                        submarinos, que cambiaron la forma en que se libraban las batallas y las estrategias utilizadas.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Resistencia y Guerrilla</h3>
+                    <p>Grupos de resistencia en varios países ocupados, como la Resistencia Francesa, jugaron un papel
+                        crucial en la lucha contra las fuerzas del Eje, realizando sabotajes y apoyando a los Aliados en
+                        su avance.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <section>
+            <p>
+                La <strong>Segunda Guerra Mundial</strong> alteró drásticamente el curso de la historia mundial. Con un
+                saldo de decenas de millones de vidas perdidas y un impacto devastador en la infraestructura y las
+                economías de muchas naciones, la guerra dejó una huella indeleble en la conciencia global. Las lecciones
+                aprendidas durante este conflicto llevaron a la creación de instituciones internacionales como las
+                Naciones Unidas, destinadas a promover la paz y la cooperación entre países. Además, la guerra propició
+                cambios sociales, políticos y tecnológicos significativos que han dado forma al mundo moderno. La
+                memoria de los eventos de la Segunda Guerra Mundial sigue siendo crucial para entender los desafíos
+                actuales y trabajar hacia un futuro más pacífico.
+            </p>
+            <p>
+                Hecho por <strong>William Sosa</strong>, visualiza más proyectos como este en
+                <a href="https://portafolio-william-sosa.web.app/" target="_blank">Portafolio de Ing. William Sosa.
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M11 4H4v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5M9 15L20 4m-5 0h5v5" />
+                    </svg>
+                </a>
+            </p>
+            <p>
+                <a href="#">Recursos y referencias.
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M11 4H4v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5M9 15L20 4m-5 0h5v5" />
+                    </svg>
+                </a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p> <!-- Script --> </p>
+    </footer>
+</body>
+
+</html>

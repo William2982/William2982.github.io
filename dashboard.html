@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGM | Control de Datos</title>
+    <!-- JQUERY  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- DATATABLES  -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <!-- Firebase Storage -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-storage-compat.js"></script>
+    <!-- Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+
+    <link rel="shortcut icon" href="assets/logo_msgm.webp" type="image/x-icon">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/firebase.js"></script>
+    <script src="js/dashboard.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="assets/logo_msgm.webp" alt=" ">
+            </a>
+            <h1>Memorias De La Segunda Guerra Mundial</h1>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="#">Causas</a></li>
+                <li><a href="#">Consecuencias</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Personajes</a></li>
+                <li><a href="#">Batallas</a></li>
+                <li><a href="#">Arsenal</a></li>
+                <li>
+                    <svg id="btn-logout" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 717 672">
+                        <path fill="currentColor"
+                            d="M0 151v391c0 36 15 68 39 93c24 24 55 37 91 37h196v-81H130c-27 0-48-22-48-49V151c0-27 21-48 48-48h196V21H130c-36 0-67 14-91 38c-24 25-39 56-39 92m215 118v156c0 18 16 33 34 33h181v123c0 11 6 20 16 25c4 1 8 1 10 1c7 0 13-2 18-7l235-235c11-9 10-27 0-37L474 94c-14-15-44-6-44 18v124H249c-18 0-34 15-34 33" />
+                    </svg>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- INICIO -->
+        <section id="inicio">
+            <h2>Inicio</h2>
+
+            <button id="btn-open-modal-add" class="btn">Añadir</button>
+
+            <h3>Impactos Interesantes</h3>
+            <table id="tabla-impactos">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Texto</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Script -->
+                </tbody>
+            </table>
+
+            <h3>Hechos Durante La Guerra</h3>
+            <table id="tabla-hechos">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Texto</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Script -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- CAUSAS -->
+        <section id="causas"></section>
+
+        <!-- CONSECUENCIAS -->
+        <section id="consecuencias"></section>
+
+        <!-- EVENTOS -->
+        <section id="eventos"></section>
+
+        <!-- PERSONAJES -->
+        <section id="personajes"></section>
+
+        <!-- BATALLAS -->
+        <section id="batallas"></section>
+
+        <!-- ARSENAL -->
+        <section id="arsenal"></section>
+    </main>
+
+    <!-- MODALES -->
+    <!-- Añadir -->
+    <dialog id="modal-add">
+        <div class="modal-form">
+            <h2>Añadir Nuevo Dato</h2>
+            <form id="form-add">
+                <label for="coleccion-add">Colección:</label>
+                <select name="coleccion-add" id="coleccion-add" required>
+                    <option value="">--Seleccionar--</option>
+                    <option value="impactos">Impactos</option>
+                    <option value="hechos">Hechos</option>
+                </select>
+                <label for="titulo-add">Título:</label>
+                <input type="text" id="titulo-add" name="titulo-add" placeholder="Escribe el título" required>
+                <label for="texto-add">Texto:</label>
+                <textarea id="texto-add" name="texto-add" placeholder="Escribe el texto descriptivo"
+                    required></textarea>
+                <br>
+                <button type=" submit" class="btn-submit">Añadir</button>
+                <button type="button" id="btn-cerrar-modal-add" class="btn-cancelar">Cerrar</button>
+            </form>
+        </div>
+    </dialog>
+    <!-- Eliminar -->
+    <dialog id="modal-eliminar">
+        <div class="modal-form">
+            <h2>Confirmar Eliminación</h2>
+            <form id="form-eliminar">
+                <p>¿Estás seguro de que deseas eliminar este dato?</p>
+                <button type="button" id="btn-eliminar" class="btn-submit">Eliminar</button>
+                <button type="button" id="btn-cerrar-modal-eliminar" class="btn-cancelar">Cerrar</button>
+            </form>
+        </div>
+    </dialog>
+    <!-- Editar -->
+    <dialog id="modal-editar">
+        <div class="modal-form">
+            <h2>Editar Dato</h2>
+            <form id="form-editar">
+                <label for="titulo-editar">Título:</label>
+                <input type="text" id="titulo-editar" name="titulo-editar" placeholder="Escribe el título" required>
+                <label for="texto-editar">Texto:</label>
+                <textarea id="texto-editar" name="texto-editar" placeholder="Escribe el texto descriptivo"
+                    required></textarea>
+                <br>
+                <button type="submit" class="btn-submit">Guardar Cambios</button>
+                <button type="button" id="btn-cerrar-modal-editar" class="btn-cancelar">Cerrar</button>
+            </form>
+        </div>
+    </dialog>
+
+    <footer>
+        <p> <!-- Script --> </p>
+    </footer>
+</body>
+
+</html>
